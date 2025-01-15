@@ -4,6 +4,10 @@ import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import uk.ac.nott.cs.frogger.views.Log;
+import uk.ac.nott.cs.frogger.views.Obstacle;
+import uk.ac.nott.cs.frogger.views.Turtle;
+import uk.ac.nott.cs.frogger.views.WetTurtle;
 
 import java.util.ArrayList;
 
