@@ -17,50 +17,50 @@ import java.util.List;
 
 public abstract class World extends Pane {
     private AnimationTimer t;
-    
+
     public World() {
-    	
-    	sceneProperty().addListener(new ChangeListener<Scene>() {
 
-			@Override
-			public void changed(ObservableValue<? extends Scene> observable, Scene oldValue, Scene newValue) {
-				if (newValue != null) {
-					newValue.setOnKeyReleased(new EventHandler<KeyEvent>() {
+        sceneProperty().addListener(new ChangeListener<Scene>() {
 
-						@Override
-						public void handle(KeyEvent event) {
-							if(getOnKeyReleased() != null) 
-								getOnKeyReleased().handle(event);
-							List<Actor> myActors = getObjects(Actor.class);
-							for (Actor anActor: myActors) {
-								if (anActor.getOnKeyReleased() != null) {
-									anActor.getOnKeyReleased().handle(event);
-								}
-							}
-						}
-						
-					});
-					
-					newValue.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void changed(ObservableValue<? extends Scene> observable, Scene oldValue, Scene newValue) {
+                if (newValue != null) {
+                    newValue.setOnKeyReleased(new EventHandler<KeyEvent>() {
 
-						@Override
-						public void handle(KeyEvent event) {
-							if(getOnKeyPressed() != null) 
-								getOnKeyPressed().handle(event);
-							List<Actor> myActors = getObjects(Actor.class);
-							for (Actor anActor: myActors) {
-								if (anActor.getOnKeyPressed() != null) {
-									anActor.getOnKeyPressed().handle(event);
-								}
-							}
-						}
-						
-					});
-				}
-				
-			}
-    		
-		});
+                        @Override
+                        public void handle(KeyEvent event) {
+                            if(getOnKeyReleased() != null)
+                                getOnKeyReleased().handle(event);
+                            List<Actor> myActors = getObjects(Actor.class);
+                            for (Actor anActor: myActors) {
+                                if (anActor.getOnKeyReleased() != null) {
+                                    anActor.getOnKeyReleased().handle(event);
+                                }
+                            }
+                        }
+
+                    });
+
+                    newValue.setOnKeyPressed(new EventHandler<KeyEvent>() {
+
+                        @Override
+                        public void handle(KeyEvent event) {
+                            if(getOnKeyPressed() != null)
+                                getOnKeyPressed().handle(event);
+                            List<Actor> myActors = getObjects(Actor.class);
+                            for (Actor anActor: myActors) {
+                                if (anActor.getOnKeyPressed() != null) {
+                                    anActor.getOnKeyPressed().handle(event);
+                                }
+                            }
+                        }
+
+                    });
+                }
+
+            }
+
+        });
     }
 
     public void createTimer() {
@@ -69,24 +69,24 @@ public abstract class World extends Pane {
             public void handle(long now) {
                 act(now);
                 List<Actor> actors = getObjects(Actor.class);
-                
+
                 for (Actor anActor: actors) {
-                	anActor.act(now);
+                    anActor.act(now);
                 }
-      
+
             }
         };
     }
 
     public void start() {
-    	createTimer();
+        createTimer();
         t.start();
     }
 
     public void stop() {
         t.stop();
     }
-    
+
     public void add(Actor actor) {
         getChildren().add(actor);
     }

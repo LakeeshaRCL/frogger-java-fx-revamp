@@ -2,6 +2,7 @@ package uk.ac.nott.cs.frogger.models;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.input.InputEvent;
+import uk.ac.nott.cs.frogger.views.World;
 
 import java.util.ArrayList;
 
