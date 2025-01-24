@@ -22,6 +22,12 @@ public class Log extends Actor {
 		speed = s;
 		
 	}
+
+
+	public Log(double speed){
+		this.speed = speed;
+	}
+
 	public boolean getLeft() {
 		return speed < 0;
 	}

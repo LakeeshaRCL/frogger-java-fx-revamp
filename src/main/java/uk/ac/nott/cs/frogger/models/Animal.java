@@ -207,38 +207,38 @@ public class Animal extends Actor {
 		if (getX()>600) {
 			move(-movement*2, 0);
 		}
-		if (getIntersectingObjects(Obstacle.class).size() >= 1) {
+		if (!getIntersectingObjects(Obstacle.class).isEmpty()) {
 			carDeath = true;
 		}
 		if (getX() == 240 && getY() == 82) {
 			stop = true;
 		}
-		if (getIntersectingObjects(Log.class).size() >= 1 && !noMove) {
-			if(getIntersectingObjects(Log.class).get(0).getLeft())
+		if (!getIntersectingObjects(Log.class).isEmpty() && !noMove) {
+			if(getIntersectingObjects(Log.class).getFirst().getLeft())
 				move(-2,0);
 			else
 				move (.75,0);
 		}
-		else if (getIntersectingObjects(Turtle.class).size() >= 1 && !noMove) {
+		else if (!getIntersectingObjects(Turtle.class).isEmpty() && !noMove) {
 			move(-1,0);
 		}
-		else if (getIntersectingObjects(WetTurtle.class).size() >= 1) {
-			if (getIntersectingObjects(WetTurtle.class).get(0).isSunk()) {
+		else if (!getIntersectingObjects(WetTurtle.class).isEmpty()) {
+			if (getIntersectingObjects(WetTurtle.class).getFirst().isSunk()) {
 				waterDeath = true;
 			} else {
 				move(-1,0);
 			}
 		}
-		else if (getIntersectingObjects(End.class).size() >= 1) {
+		else if (!getIntersectingObjects(End.class).isEmpty()) {
 			inter = (ArrayList<End>) getIntersectingObjects(End.class);
-			if (getIntersectingObjects(End.class).get(0).isActivated()) {
+			if (getIntersectingObjects(End.class).getFirst().isActivated()) {
 				end--;
 				points-=50;
 			}
 			points+=50;
 			changeScore = true;
 			w=800;
-			getIntersectingObjects(End.class).get(0).setEnd();
+			getIntersectingObjects(End.class).getFirst().setEnd();
 			end++;
 			setX(300);
 			setY(679.8+movement);
